@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Jarvis.Core.Device
 {
-    public enum DevicePropertyType { Continuous, Discrete }
 
     public interface IDeviceProperty
     {
-        DevicePropertyType PropertyType { get; }
         object Value { get; set; }
         IEnumerable<Tag> IdTags { get; }
         IEnumerable<Tag> MutatorTags { get; }
@@ -21,7 +19,7 @@ namespace Jarvis.Core.Device
 
     public class DeviceProperty: IDeviceProperty
     {
-        public DevicePropertyType PropertyType { get; set; }
+        public DeviceMetadata Metadata { get; private set; }
 
         public object Value{get; set;}
 
@@ -51,12 +49,12 @@ namespace Jarvis.Core.Device
 
         public bool IsContinuous
         {
-            get { return this.PropertyType == DevicePropertyType.Continuous; }
+            get { return this.Metadata.PropertyType == DevicePropertyType.Continuous; }
         }
 
         public bool IsDiscrete
         {
-            get { return this.PropertyType == DevicePropertyType.Discrete; }
+            get { return this.Metadata.PropertyType == DevicePropertyType.Discrete; }
         }
 
 
@@ -70,5 +68,29 @@ namespace Jarvis.Core.Device
             this._mtags.Add(tag);
             return this;
         }
+    }
+
+    public enum DevicePropertyType { Continuous, Discrete }
+
+    public class DeviceMetadata
+    {
+        public DevicePropertyType PropertyType { get; set;}
+
+        public IEnumerable<ValueInfo> DiscreteValues { get; set; }
+
+        public ValueBound ContinuousBoundary { get; set; }
+
+        public object DefaultValue { get; set; }
+    }
+
+    public class ValueInfo
+    {
+        public string Value { get; set; }
+        public IEnumerable<Tag> ValueTags { get; set; }
+    }
+    public class ValueBound
+    {
+        public double LowerBound { get; set; }
+        public double UpperBound { get; set; }
     }
 }

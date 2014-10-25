@@ -9,9 +9,36 @@ namespace Jarvis.Core.Device
 {
     public interface IDevice
     {
-        IEnumerable<IDeviceProperty> Properties { get; set; }
+        IEnumerable<DeviceProperty> Properties { get; set; }
         IEnumerable<Tag> IdTags { get; set; }
 
         //bool TryParse(string text, ref ICommand command);
+    }
+
+    public class Device: IDevice
+    {
+        public IEnumerable<DeviceProperty> Properties
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public IEnumerable<Tag> IdTags
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

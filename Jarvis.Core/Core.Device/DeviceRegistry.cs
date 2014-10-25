@@ -8,6 +8,6 @@ namespace Jarvis.Core.Device
 {
     public class DeviceRegistry
     {
-        IEnumerable<IDevice> Devices { get; set; }
+        IEnumerable<Device> Devices { get; set; }
     }
 }
