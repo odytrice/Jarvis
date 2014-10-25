@@ -14,7 +14,10 @@ namespace Jarvis.Middlewares
         {
             return Task.Run<IResult>(() =>
             {
-                return (IResult)null;
+                if (new[] { "what","how" }.Contains((""+previousResult.CommandBuffer).ToLower())) previousResult.Command.CommandType = CommandType.Query;
+                else previousResult.Command.CommandType = CommandType.Act;
+
+                return previousResult;
             });
         }
     }
