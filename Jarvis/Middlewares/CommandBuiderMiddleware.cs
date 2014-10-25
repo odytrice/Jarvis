@@ -12,13 +12,8 @@ namespace Jarvis.Middlewares
     {
         protected override System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<Dictionary<Device, ICollection<DeviceProperty>>> previousResult)
         {
-            return Task.Run<IResult>(() =>
-            {
-                if (new[] { "what","how" }.Contains((""+previousResult.CommandBuffer).ToLower())) previousResult.Command.CommandType = CommandType.Query;
-                else previousResult.Command.CommandType = CommandType.Act;
-
-                return previousResult;
-            });
+            //previousResult.Command.Properties[0]
+            return null;
         }
     }
 }
