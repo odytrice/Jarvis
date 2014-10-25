@@ -1,0 +1,45 @@
+﻿
+.black {
+    background-color: #111;
+}
+
+.heroblock {
+    margin: auto;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+@media (max-width: 768px) {
+    .heroblock {
+        font-size: 40px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .heroblock {
+        font-size: 60px;
+        height: 400px;
+    }
+}
+
+.heroblock #content {
+    text-align: center;
+    text-shadow: 2px 2px 1px #b4b3b3;
+}
+
+.heroblock i {
+    margin-right: 15px;
+}
+
+#login {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    font-family: calibri,Verdana;
+    padding: 20px;
+    font-weight: bold;
+}
