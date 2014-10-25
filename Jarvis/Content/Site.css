@@ -2,6 +2,19 @@
 .black {
     background-color: #111;
 }
+.bg {
+    //background:url("Images/electric.png");
+    background:url("Images/abstract.png");
+    background-position:center;
+    padding:5px;
+    margin-top:10px;
+}
+.bg-top {
+    //background:url("Images/electric.png");
+    background:url("Images/abstract.png");
+    background-position:center;
+    padding:100px;
+}
 
 .heroblock {
     margin: auto;
