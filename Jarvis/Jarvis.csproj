@@ -886,6 +886,7 @@
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.signalr\jquery.signalR-2.0.2.js" />
     <Content Include="Scripts\jquery.signalr\jquery.signalR-2.0.2.min.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
     <Content Include="Scripts\angular\version.json" />
   </ItemGroup>
@@ -894,6 +895,8 @@
     <Compile Include="CommandPipeline.cs" />
     <Compile Include="ControlHub.cs" />
     <Compile Include="Middlewares\ActionFilterMiddleware.cs" />
+    <Compile Include="Middlewares\CommandBuiderMiddleware.cs" />
+    <Compile Include="Middlewares\CommandDiscovererMiddleware.cs" />
     <Compile Include="Middlewares\DeviceLocatorMiddleware.cs" />
     <Compile Include="Middlewares\PropertyFilterMiddleware.cs" />
     <Compile Include="Middlewares\TypedMiddleware.cs" />
