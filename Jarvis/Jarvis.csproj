@@ -888,6 +888,18 @@
     <Compile Include="ClientHub.cs" />
     <Compile Include="ControlHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Client.cs" />
+    <Compile Include="Repository\Hack\ClientRepository.cs" />
+    <Compile Include="Repository\Hack\MemoryRepositoryFactory.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IRepositoryFactory.cs" />
+    <Compile Include="Service\Jarvis.cs" />
+    <Compile Include="Service\Events.cs" />
+    <Compile Include="Service\ICommand.cs" />
+    <Compile Include="Service\Impl\JarvisCommand.cs" />
+    <Compile Include="Service\Impl\JarvisResponse.cs" />
+    <Compile Include="Service\IResponse.cs" />
+    <Compile Include="Service\ResponseCodes.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup />
