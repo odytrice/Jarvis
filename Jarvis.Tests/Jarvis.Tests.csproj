@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">
+      <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
+      <Name>Jarvis.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jarvis\Jarvis.csproj">
       <Project>{D09D9886-80A8-43DE-A7F2-FD0F4D04BA76}</Project>
       <Name>Jarvis</Name>

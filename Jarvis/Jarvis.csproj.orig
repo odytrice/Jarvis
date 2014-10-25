@@ -915,10 +915,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <TypeScriptCompile Include="Scripts\app\App.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\ChatController.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-scenario.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+=======
     <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">
       <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
       <Name>Jarvis.Core</Name>
     </ProjectReference>
+>>>>>>> 48e703c55286eba1cb875f1311072f1102984c45
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -55,5 +55,10 @@ namespace Jarvis
         {   
             Clients.All.hello();
         }
+
+        public void Setup(object[] devices)
+        {
+
+        }
     }
 }
