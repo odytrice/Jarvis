@@ -31,9 +31,10 @@ namespace Jarvis
         }
 
 
-        public void Add(IMiddleware middlware)
+        public CommandPipeline Add(IMiddleware middlware)
         {
             this.__middlewares.Add(middlware);
+            return this;
         }
 
         public Task<Jarvis.Core.Message.ICommand> Process(string commandString)
