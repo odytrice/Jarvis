@@ -2,62 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>IOT Cloud Operating System</title>
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <style>
-        .heroblock {
-            margin: auto;
-            position: absolute;
-            top: 15px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-        }
-
-        @media (max-width: 768px) {
-            .heroblock {
-                font-size: 40px;
-                height: 150px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .heroblock {
-                font-size: 60px;
-                height: 400px;
-            }
-        }
-
-        .heroblock #content {
-            text-align: center;
-            text-shadow: 2px 2px 1px #b4b3b3;
-        }
-
-        .heroblock i {
-            margin-right: 15px;
-        }
-
-        #login {
-            position: fixed;
-            top: 0px;
-            right: 0px;
-            font-family: calibri,Verdana;
-            padding: 20px;
-            font-weight: bold;
-        }
-    </style>
+    <link href="Content/theme/bootstrap/flaty.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link href="Content/Site.css" rel="stylesheet" />
 
 </head>
 <body>
 
     <div class="heroblock">
-        <div id="content">
-            <i class="fa fa-credit-card"></i>Jarvis
+        <div class="container-fluid" id="content">
+            <!--<div>Jarvis</div>-->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg-top">
+                        <!--<img src="Content/Images/abstract.png" />-->
+                        <!--<img src="Content/Images/electric.png" />-->
+                    </div>
+                    <div class="bg">
+                        <!--<img src="Content/Images/abstract.png" />-->
+                        <!--<img src="Content/Images/electric.png" />-->
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12">
+                    <p> Hi Jarvis</p>
+                </div>
+
+                <div class="col-md-12">
+
+                    <input type="text" value="Say 'Hello Jarvis'" class="form-control" style="font-family:'Poiret One', cursive;font-size: 72px;padding: 150px;color: #111;text-align: center;border: none;width:100%;" />
+
+
+                </div>
+                <div class="col-md-12">
+                    <p style="font-size:x-large">
+                        <small class="help-block">
+                            <b>Press enter to send Jarvis a message.  Better yet just speak with her, don't be shy now... she's good <i>!</i></b>
+                        </small>
+                    </p>
+                </div>
+
+            </div>
         </div>
     </div>
-
-    <span id="login">
-        <a class="btn btn-default" href="/account/"><i class="fa fa-lock"></i> Login</a>
-    </span>
     <script src="Scripts/jquery/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.js"></script>
 </body>
