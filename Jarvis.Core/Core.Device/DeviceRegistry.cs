@@ -8,6 +8,9 @@ namespace Jarvis.Core.Device
 {
     public class DeviceRegistry
     {
-        IEnumerable<Device> Devices { get; set; }
+        IEnumerable<Device> Devices(string user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
