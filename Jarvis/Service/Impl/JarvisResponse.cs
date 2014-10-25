@@ -33,7 +33,7 @@ namespace Jarvis.Service.Impl
         }
 
 
-        public string[] Parameters
+        public string[] Properties
         {
             get;
             set;

@@ -905,6 +905,7 @@
     <Compile Include="Repository\Hack\MemoryRepositoryFactory.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
+    <Compile Include="Service\CommandInterpretationException.cs" />
     <Compile Include="Service\JarvisService.cs" />
     <Compile Include="Service\Events.cs" />
     <Compile Include="Service\Impl\JarvisCommand.cs" />
@@ -914,10 +915,28 @@
     <Compile Include="TypedResult.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\App.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\ChatController.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\hub.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-scenario.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">
       <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
       <Name>Jarvis.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

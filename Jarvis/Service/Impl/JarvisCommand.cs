@@ -32,7 +32,8 @@ namespace Jarvis.Service.Impl
             set;
         }
 
-        public string[] Parameters
+
+        public CommandProperty[] Properties
         {
             get;
             set;
