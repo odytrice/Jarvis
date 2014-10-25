@@ -1,11 +1,66 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>IOT Cloud Operating System</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .heroblock {
+            margin: auto;
+            position: absolute;
+            top: 15px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+
+        @media (max-width: 768px) {
+            .heroblock {
+                font-size: 40px;
+                height: 150px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .heroblock {
+                font-size: 60px;
+                height: 400px;
+            }
+        }
+
+        .heroblock #content {
+            text-align: center;
+            text-shadow: 2px 2px 1px #b4b3b3;
+        }
+
+        .heroblock i {
+            margin-right: 15px;
+        }
+
+        #login {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            font-family: calibri,Verdana;
+            padding: 20px;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 <body>
-    <div>
 
+    <div class="heroblock">
+        <div id="content">
+            <i class="fa fa-credit-card"></i>Jarvis
+        </div>
     </div>
+
+    <span id="login">
+        <a class="btn btn-default" href="/account/"><i class="fa fa-lock"></i> Login</a>
+    </span>
+    <script src="Scripts/jquery/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
 </body>
 </html>
+
+
