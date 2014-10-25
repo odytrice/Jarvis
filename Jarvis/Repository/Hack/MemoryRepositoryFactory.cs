@@ -30,11 +30,13 @@ namespace Jarvis.Repository.Hack
         private object GetRepo(Type type)
         {
             RepoInfo info = __registry[type];
-            if (info.Repository == null)
-            {
-                info.Repository = info.Create();
-            }
-            return info.Repository;
+            //if (info.Repository == null)
+            //{
+            //    info.Repository = info.Create();
+            //}
+            //return info.Repository;
+            //Just create a new instance
+            return info.Create();
         }
 
         private static MemoryRepositoryFactory __instance;

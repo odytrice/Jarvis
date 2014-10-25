@@ -10,7 +10,12 @@ namespace Jarvis
     {
         public ClientHub()
         {
-            Service.Events.Instance.NewCommandReceived += Instance_NewCommandReceived;
+            Service.Events.Instance.NewResponseReceived += Instance_NewResponseReceived;
+        }
+
+        void Instance_NewResponseReceived(object sender, Service.ResponseEventArgs e)
+        {
+            Clients.All.OnComplete(e.Response.Message);
         }
 
         public override System.Threading.Tasks.Task OnConnected()
@@ -18,11 +23,6 @@ namespace Jarvis
             return base.OnConnected();
         }
 
-        void Instance_NewCommandReceived(object sender, Service.CommandEventArgs e)
-        {
-            //to do use the client id to determine which connection ids to send command to from the user id    
-
-        }
         public void Hello()
         {
             Clients.All.hello();
@@ -30,7 +30,11 @@ namespace Jarvis
 
         public void Receive(string message)
         {
-            // 
+            Service.Events.Instance.DispatchCommand(new Service.Impl.JarvisCommand()
+            {
+                Action = message
+            });
+
         }
     }
 }

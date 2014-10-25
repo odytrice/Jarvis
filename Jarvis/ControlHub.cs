@@ -10,7 +10,12 @@ namespace Jarvis
     {
         public ControlHub()
         {
-            Service.Events.Instance.NewResponseReceived += Instance_NewResponseReceived;
+            Service.Events.Instance.NewCommandReceived += Instance_NewCommandReceived;
+        }
+
+        void Instance_NewCommandReceived(object sender, Service.CommandEventArgs e)
+        {
+            Clients.All.OnCommand(e.Command.Action);
         }
 
         public override System.Threading.Tasks.Task OnConnected()
@@ -28,12 +33,15 @@ namespace Jarvis
             return base.OnDisconnected();
         }
 
-        void Instance_NewResponseReceived(object sender, Service.ResponseEventArgs e)
-        {
-            
+        public void OnCommandCompleted(string status) {
+            Service.Events.Instance.DispatchResponse(new Service.Impl.JarvisResponse()
+            {
+                Message = status
+            });
         }
+
         public void Hello()
-        {
+        {   
             Clients.All.hello();
         }
     }

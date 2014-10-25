@@ -16,7 +16,8 @@ namespace Jarvis.Repository.Hack
 
         public Client GetByID(string id)
         {
-            return clients.FirstOrDefault(x => x.ID == id);
+            return clients.FirstOrDefault();
+            //return clients.FirstOrDefault(x => x.ID == id);
         }
 
         public string[] GetConnectionIDs(string id)
