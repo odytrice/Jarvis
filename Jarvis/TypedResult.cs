@@ -8,6 +8,9 @@ namespace Jarvis
     public class TypedResult<T> : IResult
     {
         private T __data;
+        public TypedResult()
+        { }
+
         public TypedResult(T data)
         {
             this.__data = data;
