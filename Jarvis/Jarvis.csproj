@@ -905,7 +905,6 @@
     <Compile Include="Repository\Hack\MemoryRepositoryFactory.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
-    <Compile Include="Service\CommandInterpretationException.cs" />
     <Compile Include="Service\JarvisService.cs" />
     <Compile Include="Service\Events.cs" />
     <Compile Include="Service\Impl\JarvisCommand.cs" />

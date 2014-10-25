@@ -49,6 +49,7 @@ namespace Jarvis
                     throw new ApplicationException("no middleware has been registered");
                 }
                 IResult last = new TypedResult<IEnumerable<Device>>(clientDevices, commandString);
+                last.Command = new Jarvis.Service.Impl.JarvisCommand();
                 foreach (var p in __middlewares)
                 {
                     if (last == null)
