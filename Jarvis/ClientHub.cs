@@ -11,11 +11,17 @@ namespace Jarvis
         public ClientHub()
         {
             Service.Events.Instance.NewResponseReceived += Instance_NewResponseReceived;
+            Service.Events.Instance.NewMessageAvailable += Instance_NewMessageAvailable;
+        }
+
+        void Instance_NewMessageAvailable(object sender, Service.MessageEventArgs e)
+        {
+            Clients.All.NewMessage(e.Content);
         }
 
         void Instance_NewResponseReceived(object sender, Service.ResponseEventArgs e)
         {
-            Clients.All.OnComplete(e.Response.Message);
+            Service.Jarvis.TranslateResponse(e.Response);
         }
 
         public override System.Threading.Tasks.Task OnConnected()
@@ -30,11 +36,7 @@ namespace Jarvis
 
         public void Receive(string message)
         {
-            Service.Events.Instance.DispatchCommand(new Service.Impl.JarvisCommand()
-            {
-                Action = message
-            });
-
+            Service.Jarvis.ToCommand(message);
         }
     }
 }

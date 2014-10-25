@@ -885,6 +885,7 @@
     <Compile Include="Repository\Hack\MemoryRepositoryFactory.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
+    <Compile Include="Service\Jarvis.cs" />
     <Compile Include="Service\Events.cs" />
     <Compile Include="Service\ICommand.cs" />
     <Compile Include="Service\Impl\JarvisCommand.cs" />

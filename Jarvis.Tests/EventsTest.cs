@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Jarvis.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class EventsTest
     {
         [TestMethod]
         public void TestMethod1()

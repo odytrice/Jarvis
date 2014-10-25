@@ -8,13 +8,18 @@ namespace Jarvis.Service
     public class Events
     {
         public event EventHandler<CommandEventArgs> NewCommandReceived;
+
         public event EventHandler<ResponseEventArgs> NewResponseReceived;
+
+        public event EventHandler<MessageEventArgs> NewMessageAvailable;
+
         private Events()
         {
 
         }
 
         private static Events __events;
+
         public static Events Instance
         {
             get
@@ -42,6 +47,14 @@ namespace Jarvis.Service
                 this.NewResponseReceived(this, new ResponseEventArgs(response));
             }
         }
+
+        public void DispatchMessage(string message)
+        {
+            if (this.NewMessageAvailable != null)
+            {
+                this.NewMessageAvailable(this, new MessageEventArgs(message));
+            }
+        }
     }
 
     public class CommandEventArgs : EventArgs
@@ -60,5 +73,14 @@ namespace Jarvis.Service
             this.Response = response;
         }
         public IResponse Response { get; private set; }
+    }
+
+    public class MessageEventArgs : EventArgs
+    {
+        public MessageEventArgs(string str)
+        {
+            this.Content = str;
+        }
+        public string Content { get; private set; }
     }
 }

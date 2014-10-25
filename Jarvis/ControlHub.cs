@@ -15,7 +15,7 @@ namespace Jarvis
 
         void Instance_NewCommandReceived(object sender, Service.CommandEventArgs e)
         {
-            Clients.All.OnCommand(e.Command.Action);
+            Clients.All.OnCommand(e.Command);
         }
 
         public override System.Threading.Tasks.Task OnConnected()
@@ -33,11 +33,22 @@ namespace Jarvis
             return base.OnDisconnected();
         }
 
-        public void OnCommandCompleted(string status) {
-            Service.Events.Instance.DispatchResponse(new Service.Impl.JarvisResponse()
-            {
-                Message = status
-            });
+        public void OnCommandCompleted(Service.Impl.JarvisResponse response) {
+            Service.Jarvis.TranslateResponse(response);
+            //if (response.StatusCode == Service.ResponseCodes.DEVICE_LIST)
+            //{
+            //    // TODO: Store device lists 
+            //}
+            //else
+            //{
+            //    Service.Jarvis.TranslateResponse(response);
+            //}
+            
+        }
+
+        public void ReceiveDeviceList(Dictionary<string, string> list)
+        {
+            // TODO: store the list of devices
         }
 
         public void Hello()
