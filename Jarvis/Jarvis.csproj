@@ -891,6 +891,7 @@
     <Compile Include="Service\Impl\JarvisCommand.cs" />
     <Compile Include="Service\Impl\JarvisResponse.cs" />
     <Compile Include="Service\IResponse.cs" />
+    <Compile Include="Service\ResponseCodes.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup />

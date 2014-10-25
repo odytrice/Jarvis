@@ -44,5 +44,25 @@ namespace Jarvis.Repository.Hack
         {
             clients.RemoveAll(x => x.ID == id);
         }
+
+        public Client Find(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Client instance)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Client instance)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Client> Fetch(System.Linq.Expressions.Expression<Func<Client, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

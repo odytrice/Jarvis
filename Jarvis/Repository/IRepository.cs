@@ -8,10 +8,10 @@ namespace Jarvis.Repository
 {
     public interface IRepository<T> where T : class
     {
-        T GetByID(string id);
-        string[] GetConnectionIDs(string id);
-        T Add(string id, string connectionID);
-        void RemoveConnection(string connectionID);
+        T Find(string id);
+        void Add(T instance);
         void Remove(string id);
+        void Remove(T instance);
+        IEnumerable<T> Fetch(System.Linq.Expressions.Expression<Func<T, bool>> filter);
     }
 }
