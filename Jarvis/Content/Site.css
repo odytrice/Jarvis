@@ -1,19 +1,23 @@
-﻿
+﻿body {
+    font-family: 'Poiret One', cursive;
+}
 .black {
     background-color: #111;
+    
 }
+
 .bg {
     //background:url("Images/electric.png");
-    background:url("Images/abstract.png");
-    background-position:center;
-    padding:5px;
-    margin-top:10px;
+    background: url("Images/electric.png");
+    background-position: center;
+    padding: 5px;
+    margin-top: 10px;
 }
+
 .bg-top {
-    //background:url("Images/electric.png");
-    background:url("Images/abstract.png");
-    background-position:center;
-    padding:100px;
+    background: url("Images/abstract.png");
+    background-position: center;
+    padding: 100px;
 }
 
 .heroblock {
@@ -41,7 +45,8 @@
 
 .heroblock #content {
     text-align: center;
-    text-shadow: 2px 2px 1px #b4b3b3;
+    color: #ccc;
+    /*text-shadow: 2px 2px 1px #b4b3b3;*/
 }
 
 .heroblock i {
