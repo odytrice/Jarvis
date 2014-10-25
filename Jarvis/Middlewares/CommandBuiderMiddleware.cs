@@ -12,8 +12,17 @@ namespace Jarvis.Middlewares
     {
         protected override System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<Dictionary<Device, ICollection<DeviceProperty>>> previousResult)
         {
-            //previousResult.Command.Properties[0]
-            return null;
+            return Task.Run<IResult>(() =>
+            {
+                var dvs = previousResult.TypedData;
+                if (dvs.Count != 1) return new TypedResult<object>(null);
+                else
+                {
+                    previousResult.Command.DeviceID = dvs.First().Key.Id;
+                    //previousResult.Command.Properties = dvs.First().Value.Select(p => new CommandProperty { Name = p.Id, Value = p.Value }).ToArray();
+                    return null;
+                }
+            });
         }
     }
 }
