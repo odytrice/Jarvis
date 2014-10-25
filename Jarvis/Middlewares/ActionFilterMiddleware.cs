@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Jarvis.Middlewares
 {
-    public class ActionFilterMiddleware : TypedMiddleware<IEnumerable<Device>>
+    public class ActionFilterMiddleware : TypedMiddleware<Dictionary<Device, ICollection<DeviceProperty>>>
     {
         protected override System.Threading.Tasks.Task<IResult> Run(string commandString, 
                                                                     TypedResult<Dictionary<Device, ICollection<DeviceProperty>>> previousResult)
