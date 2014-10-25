@@ -12,6 +12,6 @@ namespace Jarvis.Core.Device
         IEnumerable<IDeviceProperty> Properties { get; set; }
         IEnumerable<Tag> IdTags { get; set; }
 
-        bool TryParse(string text, ref ICommand command);
+        //bool TryParse(string text, ref ICommand command);
     }
 }
