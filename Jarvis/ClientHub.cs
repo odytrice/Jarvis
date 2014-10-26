@@ -62,10 +62,7 @@ namespace Jarvis
             }
             Messages.Enqueue(message);
             Clients.All.Initialize(Messages);
-            if (message.Sender == "Jarvis")
-            {
-                Clients.All.PlayAudio(message.Body);
-            }
+            Clients.All.PlayAudio(message.Body);
         }
 
         public override Task OnDisconnected(bool stopCalled)
