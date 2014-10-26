@@ -32,5 +32,33 @@ namespace Jarvis.Core.Device
         {
             return this.Name;
         }
+
+
+        public static implicit operator Tag(string name)
+        {
+            return name!=null ? new Tag{ Name = name} : null;
+        }
+
+        public static explicit operator string(Tag t)
+        {
+            if(t==null) return null;
+            else return t.Name;
+        }
+
+        public static bool operator ==(Tag x, Tag y)
+        {
+            try
+            {
+                return x.Equals(y);
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+        public static bool operator !=(Tag x, Tag y)
+        {
+            return !(x == y);
+        }
     }
 }
