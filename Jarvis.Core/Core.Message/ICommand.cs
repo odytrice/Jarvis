@@ -12,7 +12,7 @@ namespace Jarvis.Core.Message
         string DeviceID { get; set; }
         string Action { get; set; }
         CommandType CommandType { get; set; }
-        public CommandProperty[] Properties { get; set; }
+        CommandProperty[] Properties { get; set; }
     }
 
     public class CommandProperty {

@@ -33,5 +33,12 @@ namespace Jarvis
             get;
             set;
         }
+
+
+        public Core.Message.ICommand Command
+        {
+            get;
+            set;
+        }
     }
 }

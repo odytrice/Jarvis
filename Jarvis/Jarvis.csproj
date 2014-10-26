@@ -912,12 +912,6 @@
     <Compile Include="TypedResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">
-      <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
-      <Name>Jarvis.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\App.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\ChatController.ts" />
     <TypeScriptCompile Include="Scripts\app\services\hub.ts" />
@@ -931,6 +925,15 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">
+      <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
+      <Name>Jarvis.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

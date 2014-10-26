@@ -59,9 +59,9 @@ namespace Jarvis
                     t.Wait();
                     last = t.Result;
                 }
-                if (last != null && last.Data is ICommand)
+                if (last != null && last.Command != null)
                 {
-                    return ((ICommand)last.Data);
+                    return last.Command;
                 }
                 throw new ApplicationException("last middleware did not return an ICommand");
             });
@@ -77,5 +77,6 @@ namespace Jarvis
     {
         string CommandBuffer { get; set; }
         object Data { get; }
+        ICommand Command { get; set; }
     }
 }
