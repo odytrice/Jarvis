@@ -20,6 +20,7 @@ namespace Jarvis.Middlewares
             else
             {
                 var matched = new Dictionary<Device, ICollection<DeviceProperty>>();
+                var values = new List<String>();
                 var cbuf = previousResult.CommandBuffer;
                 
                 foreach (var dmap in previousResult.TypedData)
@@ -27,29 +28,37 @@ namespace Jarvis.Middlewares
                     var device = dmap.Key;
                     foreach (var prop in dmap.Value)
                     {
-                        //actions
-                        
+                        //actions                        
                         if (prop.MutatorTags.Any(tag => cbuf.Contains((string)tag)))
                         {
                             if (!matched.ContainsKey(device)) matched[device] = new HashSet<DeviceProperty>();
                             matched[device].Add(prop);
+
+                            //values
+                            if(prop.IsContinuous)
+                            {
+
+                            }
+                            else if(prop.IsDiscrete)
+                            {
+                                prop.Metadata.DiscreteValues.ToList().ForEach(v =>
+                                {
+                                    if (cbuf.Contains(v.Value))
+                                    {
+                                        values.Add(v.Value);
+                                        prop.Value = v.Value;
+                                    }
+                                });
+                            }
                         }
                     }
                 }
-
-                //if (matched.Count == 0 && previousResult.TypedData.Count > 0)
-                //{
-                //    var item = previousResult.TypedData.First();
-                //    throw new DeviceMutationUknownException(String.Format("No ", item.Key.IdTags.First(), item.Value.First().IdTags.First()))
-                //    {
-
-                //    };
-                //}
 
                 IEnumerable<string> tags = matched.Values.SelectMany(dev => dev.Select(t => t.IdTags)
                                                          .SelectMany(ts => ts.Select(t => t.Name)))
                                                          .OrderByDescending(st => st.Length);
                 tags.ToList().ForEach(p => cbuf = cbuf.Replace(p, ""));
+                values.ForEach(p =>cbuf = cbuf.Replace(p, ""));
 
                 return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf)
                 {
