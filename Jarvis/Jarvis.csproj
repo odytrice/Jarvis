@@ -122,6 +122,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\dribble168.jpg" />
     <Content Include="Content\Images\electric.png" />
     <Content Include="Content\Images\homies__dribbble_1x.png" />
@@ -145,6 +148,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\Jarvis-Hackathon.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -919,8 +927,6 @@
     <Content Include="Scripts\angular\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery.signalr\jquery.signalR-2.0.2.js" />
-    <Content Include="Scripts\jquery.signalr\jquery.signalR-2.0.2.min.js" />
     <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
     <Content Include="Scripts\angular\version.json" />
@@ -979,6 +985,7 @@
     <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Scripts\jquery.signalr\" />
     <Folder Include="Views\Audio\" />
   </ItemGroup>
   <ItemGroup>

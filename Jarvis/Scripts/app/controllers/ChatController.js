@@ -1,5 +1,5 @@
 ﻿/// <reference path="../services/hub.ts" />
-app.controller("ChatController", function ($scope, _hub) {
+app.controller("ChatController", function ($scope, _hub, _audio) {
     var model = {
         Message: {
             Sender: 'You',
@@ -14,6 +14,14 @@ app.controller("ChatController", function ($scope, _hub) {
         $scope.SendMessage = function (content) {
             _hub.SendMessage(content);
             model.Message.Body = "";
+        };
+        $scope.startSpeech = function () {
+            _audio.listen(function (result) {
+                $scope.$apply(function () {
+                    model.Message.Body = result;
+                    _hub.SendMessage(model.Message);
+                });
+            });
         };
     });
 

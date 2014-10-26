@@ -1,4 +1,4 @@
-﻿app.factory("_audio", function () {
+﻿app.factory("_audio", function ($q) {
     var buffer = null;
 
     // Fix up prefixing
@@ -27,14 +27,27 @@
             request.send();
         }
 
-        function playSound(buffer) {
-        }
-
         loadSound("/audio/query?text=" + encodeURI(text));
     };
     var _audio = {
         playAudio: function (text) {
             play(text);
+        },
+        listen: function (call) {
+            var defer = $q.defer();
+
+            var wnd = window;
+            var recognition = new wnd.webkitSpeechRecognition();
+            recognition.onresult = function (event) {
+                var text = event.results[0][0].transcript;
+
+                if (event.results[0][0].confidence > 0.2) {
+                    call(text);
+                    console.log(text);
+                }
+            };
+            recognition.start();
+            return defer.promise;
         }
     };
 

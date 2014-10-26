@@ -27,7 +27,6 @@ app.service('_hub', ['$rootScope', "_audio", function ($rootScope: ng.IRootScope
         PlayAudio: function (text) {
             _audio.playAudio(text);
         }
-
     });
 
     //Start Connection
@@ -35,7 +34,7 @@ app.service('_hub', ['$rootScope', "_audio", function ($rootScope: ng.IRootScope
 
     ///Bind Server Methods
     self.SendMessage = function (message) {
-        hub.server.OnCommandCompleted(message);
+        hub.server.receive(message);
     }
 
     self.GetMessages = function () {

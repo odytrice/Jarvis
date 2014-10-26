@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using System.Collections.Concurrent;
 using Jarvis.Models;
+using System.Threading.Tasks;
 
 namespace Jarvis
 {
@@ -12,9 +13,10 @@ namespace Jarvis
     {
         public static ConcurrentQueue<Message> Messages = new ConcurrentQueue<Message>();
 
+        EventHandler<Service.MessageEventArgs> _handler;
         public ClientHub()
         {
-            Service.Events.Instance.NewMessageAvailable += Instance_NewMessageAvailable;
+
         }
 
         void Instance_NewMessageAvailable(object sender, Service.MessageEventArgs e)
@@ -36,12 +38,18 @@ namespace Jarvis
 
         private void NewConnection()
         {
+            if (_handler == null)
+            {
+                _handler = Instance_NewMessageAvailable;
+                Service.Events.Instance.NewMessageAvailable += _handler;
+            }
             Clients.Client(Context.ConnectionId).Initialize(Messages);
+
         }
 
-        public void Receive(Message message)
+        public async Task Receive(Message message)
         {
-            Service.JarvisService.ToCommand(message.Body, Context.ConnectionId);
+            await Service.JarvisService.ToCommand(message.Body, "");
             EnqueueMessage(message);
         }
 
@@ -54,7 +62,21 @@ namespace Jarvis
             }
             Messages.Enqueue(message);
             Clients.All.Initialize(Messages);
-            Clients.All.PlayAudio(message.Body);
+            if (message.Sender == "Jarvis")
+            {
+                Clients.All.PlayAudio(message.Body);
+            }
+        }
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            if (_handler != null)
+            {
+                Service.Events.Instance.NewMessageAvailable -= _handler;
+                _handler = null;
+            }
+
+            return base.OnDisconnected(stopCalled);
         }
     }
 }
