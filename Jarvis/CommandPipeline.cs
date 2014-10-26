@@ -49,6 +49,7 @@ namespace Jarvis
                     throw new ApplicationException("no middleware has been registered");
                 }
                 IResult last = new TypedResult<IEnumerable<Device>>(clientDevices, commandString);
+                last.Command = new Jarvis.Service.Impl.JarvisCommand();
                 foreach (var p in __middlewares)
                 {
                     if (last == null)
@@ -59,9 +60,9 @@ namespace Jarvis
                     t.Wait();
                     last = t.Result;
                 }
-                if (last != null && last.Data is ICommand)
+                if (last != null && last.Command != null)
                 {
-                    return ((ICommand)last.Data);
+                    return last.Command;
                 }
                 throw new ApplicationException("last middleware did not return an ICommand");
             });
@@ -77,5 +78,6 @@ namespace Jarvis
     {
         string CommandBuffer { get; set; }
         object Data { get; }
+        ICommand Command { get; set; }
     }
 }

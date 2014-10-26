@@ -3,8 +3,8 @@ app.controller("ChatController", function ($scope, _hub: IHub) {
 
     var model = {
         Message: {
-            Sender: 'You',
-            Body: 'Hi Jarvis'
+            Sender: '',
+            Body: ''
         },
         GetMessages: function () {
             return _hub.GetMessages();

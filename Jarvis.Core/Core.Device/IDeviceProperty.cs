@@ -12,6 +12,7 @@ namespace Jarvis.Core.Device
         object Value { get; set; }
         IEnumerable<Tag> IdTags { get; }
         IEnumerable<Tag> MutatorTags { get; }
+        string Id { get; }
 
         bool IsContinuous { get; } //convenience method for metaData == DevicePropertyType.Continuous
         bool IsDiscrete { get; } //convenience method for metaData == DevicePropertyType.Discrete
@@ -46,6 +47,8 @@ namespace Jarvis.Core.Device
                     foreach(var t in value) this._mtags.Add(t);
             }
         }
+
+        public string Id { get; set; }
 
         public bool IsContinuous
         {

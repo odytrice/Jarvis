@@ -7,6 +7,8 @@ namespace Jarvis.Tests
     [TestClass]
     public class JarvisTest
     {
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
         public async Task TestToCommand()
         {
@@ -23,15 +25,24 @@ namespace Jarvis.Tests
         public async Task TestToTranslateResponse()
         {
             string commandReceived = null, expectedResponse = "go to yaba";
-            Jarvis.Service.Events.Instance.NewResponseReceived += (e, o) =>
+            Jarvis.Service.Events.Instance.NewMessageAvailable += (e, o) =>
             {
-                commandReceived = o.Response.Message;
+                commandReceived = o.Content;
             };
             await Jarvis.Service.JarvisService.TranslateResponse(new Jarvis.Service.Impl.JarvisResponse()
             {
-                Message = expectedResponse
+                Message = expectedResponse,
+                StatusCode = Jarvis.Service.ResponseCodes.SUCCESS
             });
-            Assert.AreEqual(commandReceived, expectedResponse);
+            Assert.IsNotNull(commandReceived);
+            TestContext.WriteLine(commandReceived);
+        }
+
+        [TestMethod]
+        public void TestStringifyArray()
+        {
+            String str = Jarvis.Service.JarvisService.StringifyArray(new string[] { "A", "B", "C" });
+            Assert.AreEqual(str, "A, B and C");
         }
     }
 }

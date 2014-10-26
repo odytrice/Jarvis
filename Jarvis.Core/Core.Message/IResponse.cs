@@ -12,6 +12,7 @@ namespace Jarvis.Core.Message
         string UserID { get; set; }
         int StatusCode { get; set; }
         string Message { get; set; }
-        string[] Parameters { get; set; }
+        CommandProperty[] Properties { get; set; }
+        CommandType CommandType { get; set; }
     }
 }

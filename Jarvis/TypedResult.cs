@@ -8,6 +8,9 @@ namespace Jarvis
     public class TypedResult<T> : IResult
     {
         private T __data;
+        public TypedResult()
+        { }
+
         public TypedResult(T data)
         {
             this.__data = data;
@@ -29,6 +32,13 @@ namespace Jarvis
         public T TypedData { get { return __data; } }
 
         public string CommandBuffer
+        {
+            get;
+            set;
+        }
+
+
+        public Core.Message.ICommand Command
         {
             get;
             set;

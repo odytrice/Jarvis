@@ -10,5 +10,7 @@ namespace Jarvis.Service
         public const int DEVICE_LIST = 120;
         public const int UNKNOWN_COMMAND = -100;
         public const int COMMAND_ERROR = -400;
+        public const int SUCCESS = 200;
+        public const int FAILED = -500;
     }
 }
