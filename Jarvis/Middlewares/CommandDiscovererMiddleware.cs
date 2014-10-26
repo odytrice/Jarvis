@@ -7,20 +7,24 @@ using System.Web;
 
 namespace Jarvis.Middlewares
 {
-    public class CommandDiscovererMiddleware: IMiddleware
+    public class CommandDiscovererMiddleware : IMiddleware
     {
-        public System.Threading.Tasks.Task<IResult> Run(string commandString, IResult previousResult)
+        public CommandDiscovererMiddleware()
         {
-            return Task.Run<IResult>(() =>
-            {
-                return Task.Run<IResult>(() =>
-                {
-                    if (new[] { "what", "how" }.Contains(("" + previousResult.CommandBuffer).ToLower())) previousResult.Command.CommandType = CommandType.Query;
-                    else previousResult.Command.CommandType = CommandType.Act;
+            this.Priority = 10; 
+        }
+        public IResult Run(string commandString, IResult previousResult)
+        {
+                if (new[] { "what", "how" }.Contains(("" + previousResult.CommandBuffer).ToLower())) previousResult.Command.CommandType = CommandType.Query;
+                else previousResult.Command.CommandType = CommandType.Act;
 
-                    return previousResult;
-                });
-            });
+                return previousResult;
+        }
+
+        public int Priority
+        {
+            get;
+            set;
         }
     }
 }

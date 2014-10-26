@@ -13,7 +13,7 @@ namespace Jarvis.Core.Device
         IEnumerable<Tag> IdTags { get; set; }
         string Id { get; set; }
 
-        //bool TryParse(string text, ref ICommand command);
+        //bool TryParse(string text, ref ICommand command);c
     }
 
     public class Device: IDevice
