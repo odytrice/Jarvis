@@ -7,18 +7,18 @@ using System.Web;
 
 namespace Jarvis.Service
 {
-    public class Jarvis
+    public class JarvisService
     {
         /// <summary>
         /// Transforms a string, codifies into a command object that is dispatched `
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static Task ToCommand(string str)
+        public static Task ToCommand(string str, string clientID)
         {
             
             return System.Threading.Tasks.Task.Run(() => {
-                var t = CommandPipeline.Instance.Process(str);
+                var t = CommandPipeline.Instance.Process(str, Jarvis.Core.Device.DeviceRegistry.Instance.Fetch(clientID));
                 t.Wait();
                 if (t.IsFaulted)
                 {

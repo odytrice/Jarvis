@@ -21,7 +21,7 @@ namespace Jarvis
 
         void Instance_NewResponseReceived(object sender, Service.ResponseEventArgs e)
         {
-            Service.Jarvis.TranslateResponse(e.Response);
+            Service.JarvisService.TranslateResponse(e.Response);
         }
 
         public override System.Threading.Tasks.Task OnConnected()
@@ -36,7 +36,7 @@ namespace Jarvis
 
         public void Receive(string message)
         {
-            Service.Jarvis.ToCommand(message);
+            Service.JarvisService.ToCommand(message, "");
         }
     }
 }

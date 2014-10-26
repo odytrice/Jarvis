@@ -34,7 +34,7 @@ namespace Jarvis
         }
 
         public void OnCommandCompleted(Service.Impl.JarvisResponse response) {
-            Service.Jarvis.TranslateResponse(response);
+            Service.JarvisService.TranslateResponse(response);
             //if (response.StatusCode == Service.ResponseCodes.DEVICE_LIST)
             //{
             //    // TODO: Store device lists 
