@@ -21,8 +21,8 @@ namespace Jarvis.Middlewares
             else
             {
                 previousResult.Command.DeviceID = dvs.First().Key.Id;
-                previousResult.Command.Properties = dvs.First().Value.Select(p => new CommandProperty { Name = p.Id, Value = p.Value }).ToArray();
-                previousResult.Command.Action = (string)dvs.First().Value.First().MutatorTags.First();
+                //previousResult.Command.Properties = dvs.First().Value.Select(p => new CommandProperty { Name = p.Id, Value = p.Value }).ToArray();
+                ///previousResult.Command.Action = (string)dvs.First().Value.First().MutatorTags.First();
                 return new TypedResult<object> { Command = previousResult.Command };
             }
         }

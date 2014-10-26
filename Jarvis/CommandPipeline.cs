@@ -19,7 +19,7 @@ namespace Jarvis
             __middlewares.Add(new Middlewares.DeviceLocatorMiddleware());
             __middlewares.Add(new Middlewares.PropertyFilterMiddleware());
             //__middlewares.Add(new Middlewares.ActionFilterMiddleware());
-            __middlewares.Add(new Middlewares.CommandBuiderMiddleware());
+           // __middlewares.Add(new Middlewares.CommandBuiderMiddleware());
         }
 
         private static CommandPipeline __instance = null;

@@ -23,6 +23,7 @@ namespace Jarvis.Middlewares
                     foreach (var device in previousResult.TypedData)
                     {
                         var property = device.Properties.FirstOrDefault(x => x.IsInCommand(commandString));
+                        
                         if (property != null)
                         {
                             var value = property.DetermineValue(commandString);
@@ -30,6 +31,8 @@ namespace Jarvis.Middlewares
                             {
                                 throw new ApplicationException("value type not decernible");
                             }
+                            previousResult.Command.DeviceID = device.Id;
+
                             previousResult.Command.Properties = new Core.Message.CommandProperty[] {
                                 new Core.Message.CommandProperty() {
                                     Name = property.Name,
