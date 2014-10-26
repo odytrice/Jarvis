@@ -34,7 +34,7 @@ app.service('_hub', [
 
         ///Bind Server Methods
         self.SendMessage = function (message) {
-            hub.server.receive(message);
+            hub.server.OnCommandCompleted(message);
         };
 
         self.GetMessages = function () {

@@ -1,12 +1,12 @@
 ﻿app.factory("_audio", function () {
+    var buffer = null;
+
+    // Fix up prefixing
+    var win = window;
+    var AudioContext = win.AudioContext || win.webkitAudioContext;
+    var context = new AudioContext();
+
     var play = function (text) {
-        var buffer = null;
-
-        // Fix up prefixing
-        var win = window;
-        var AudioContext = win.AudioContext || win.webkitAudioContext;
-        var context = new AudioContext();
-
         function loadSound(url) {
             var request = new XMLHttpRequest();
             request.open('GET', url, true);
