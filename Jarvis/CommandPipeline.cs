@@ -18,7 +18,7 @@ namespace Jarvis
             __middlewares.Add(new Middlewares.CommandDiscovererMiddleware());
             __middlewares.Add(new Middlewares.DeviceLocatorMiddleware());
             __middlewares.Add(new Middlewares.PropertyFilterMiddleware());
-            __middlewares.Add(new Middlewares.ActionFilterMiddleware());
+            //__middlewares.Add(new Middlewares.ActionFilterMiddleware());
             __middlewares.Add(new Middlewares.CommandBuiderMiddleware());
         }
 

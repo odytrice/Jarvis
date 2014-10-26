@@ -20,7 +20,9 @@ namespace Jarvis.Core.Device
 
     public class DeviceProperty: IDeviceProperty
     {
-        public DeviceMetadata Metadata { get; private set; }
+        public string Name { get; set; }
+
+        public DeviceMetadata Metadata { get; set; }
 
         public object Value{get; set;}
 
@@ -71,6 +73,35 @@ namespace Jarvis.Core.Device
             this._mtags.Add(tag);
             return this;
         }
+
+        public bool IsInCommand(string commandString)
+        {
+            return this.IdTags.Any(c => commandString.IndexOf(c.Name, StringComparison.OrdinalIgnoreCase) != -1);
+        }
+
+        public object DetermineValue(string commandString)
+        {
+            if (this.Metadata != null)
+            {
+                if (this.Metadata.DiscreteValues != null)
+                {
+                    foreach (var m in this.Metadata.DiscreteValues)
+                    {
+                        if (m.ValueTags.Any(x => commandString.IndexOf(x.Name, StringComparison.OrdinalIgnoreCase) != -1))
+                        {
+                            return m.Value;
+                        }
+                    }
+                }
+                //return this.Metadata.DefaultValue;
+            }
+            var tag = this.MutatorTags.FirstOrDefault(x => commandString.IndexOf(x.Name, StringComparison.OrdinalIgnoreCase) != -1);
+            if (tag != null)
+            {
+                return tag.Name;
+            }
+            return null;
+        }
     }
 
     public enum DevicePropertyType { Continuous, Discrete }
@@ -91,6 +122,7 @@ namespace Jarvis.Core.Device
         public string Value { get; set; }
         public IEnumerable<Tag> ValueTags { get; set; }
     }
+
     public class ValueBound
     {
         public double LowerBound { get; set; }

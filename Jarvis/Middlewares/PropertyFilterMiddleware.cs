@@ -22,26 +22,43 @@ namespace Jarvis.Middlewares
                     var cbuf = previousResult.CommandBuffer;
                     foreach (var device in previousResult.TypedData)
                     {
-                        foreach(var prop in device.Properties)
+                        var property = device.Properties.FirstOrDefault(x => x.IsInCommand(commandString));
+                        if (property != null)
                         {
-                            //ids
-                            if (prop.IdTags.Any(tag => cbuf.Contains((string)tag)))
+                            var value = property.DetermineValue(commandString);
+                            if (value == null)
                             {
-                                if (!matched.ContainsKey(device)) matched[device] = new HashSet<DeviceProperty>();
-                                matched[device].Add(prop);
+                                throw new ApplicationException("value type not decernible");
                             }
+                            previousResult.Command.Properties = new Core.Message.CommandProperty[] {
+                                new Core.Message.CommandProperty() {
+                                    Name = property.Name,
+                                    Value = value
+                                }
+                            };
                         }
+                        //foreach(var prop in device.Properties)
+                        //{
+                        //    //ids
+                        //    if (prop.IdTags.Any(tag => cbuf.Contains((string)tag)))
+                        //    {
+                        //        if (!matched.ContainsKey(device)) matched[device] = new HashSet<DeviceProperty>();
+                        //        matched[device].Add(prop);
+                        //    }
+                        //}
                     }
 
-                    IEnumerable<string> tags = matched.Values.SelectMany(dev => dev.Select(t => t.IdTags)
-                                                             .SelectMany(ts => ts.Select(t => t.Name)))
-                                                             .OrderByDescending(st => st.Length);
-                    tags.ToList().ForEach(p => cbuf = cbuf.Replace(p, ""));
+                    return previousResult;
 
-                    return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf)
-                    {
-                        Command = previousResult.Command
-                    };
+                    //IEnumerable<string> tags = matched.Values.SelectMany(dev => dev.Select(t => t.IdTags)
+                    //                                         .SelectMany(ts => ts.Select(t => t.Name)))
+                    //                                         .OrderByDescending(st => st.Length);
+                    //tags.ToList().ForEach(p => cbuf = cbuf.Replace(p, ""));
+
+                    //return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf)
+                    //{
+                    //    Command = previousResult.Command
+                    //};
                 }
         }
     }
