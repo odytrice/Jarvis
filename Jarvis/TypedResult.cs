@@ -13,6 +13,12 @@ namespace Jarvis
             this.__data = data;
         }
 
+        public TypedResult(T data, string commandBuffer)
+        {
+            this.__data = data;
+            this.CommandBuffer = commandBuffer;
+        }
+
 
 
         public object Data
@@ -21,5 +27,11 @@ namespace Jarvis
         }
 
         public T TypedData { get { return __data; } }
+
+        public string CommandBuffer
+        {
+            get;
+            set;
+        }
     }
 }

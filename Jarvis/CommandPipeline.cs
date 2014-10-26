@@ -71,6 +71,7 @@ namespace Jarvis
 
     public interface IResult
     {
+        string CommandBuffer { get; set; }
         object Data { get; }
     }
 }
