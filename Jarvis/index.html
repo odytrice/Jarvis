@@ -16,19 +16,12 @@
 
             <div class="row">
                 <div class="col-md-12">
+                    <!--<div class="bg"></div>-->
 
-                    <div class="col-md-6 col-md-offset-3 chat-window">
-
-                        <table border="0" style="width:100%; height:100%">
-                            <tr>
-                                <td style="vertical-align:bottom">
-                                    <p ng-repeat="message in model.GetMessages()">
-                                        {{message.Sender}} : {{message.Body}}
-                                    </p>
-                                </td>
-                            </tr>
-
-                        </table>
+                    <div class="col-md-6 col-md-offset-3" style="vertical-align:bottom;color:#F1901D;border:0px solid red;font-size:36px;background:rgba(255,255,255,1);height:600px;overflow-y:hidden;">
+                        <p> 
+                            {{Message.sender}} : {{Message.body}}
+                        </p>
 
                     </div>
 
@@ -41,8 +34,8 @@
                 </div>
 
                 <div class="col-md-12">
-                    <form ng-submit="SendMessage(model.Message)">
-                        <input type="text" ng-model="model.Message.Body" placeholder="Say 'Hello Jarvis'" class="form-control" style="font-family:'Poiret One', cursive;font-size: 72px;padding: 150px;color: #111;text-align: center;border: none;width:100%;" />
+                    <form ng-submit="SendMessage()">
+                        <input type="text" ng-model="chat.message" placeholder="Say 'Hello Jarvis'" class="form-control" style="font-family:'Poiret One', cursive;font-size: 72px;padding: 150px;color: #111;text-align: center;border: none;width:100%;" />
                     </form>
                 </div>
                 <div class="col-md-12">
@@ -60,15 +53,8 @@
     <script src="Scripts/jquery/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/angular/angular.min.js"></script>
-
     <script src="Scripts/app/App.js"></script>
-    <script src="Scripts/app/services/hub.js"></script>
     <script src="Scripts/app/controllers/ChatController.js"></script>
-
-    <!-- SignalR -->
-    <script src="Scripts/jquery.signalr/jquery.signalR-2.1.2.js"></script>
-    <script src="/signalr/js"></script>
-
 </body>
 </html>
 

@@ -1,27 +1,18 @@
-﻿app.controller("ChatController", function ($scope, _hub) {
-    var model = {
+﻿app.controller("ChatController", function ($scope) {
+    var models = {
         Message: {
-            Sender: 'You',
-            Body: 'Hi Jarvis'
-        },
-        GetMessages: function () {
-            return _hub.GetMessages();
+            sender: 'You',
+            body: 'Hi Jarvis'
         }
     };
 
-    _hub.start.done(function () {
-        $scope.SendMessage = function (content) {
-            _hub.SendMessage(content);
-            model.Message.Body = "";
-        };
-    });
-
-    _hub.start.fail(function (reason) {
-        console.error(reason);
-    });
+    var sendMessage = function () {
+        console.log('good');
+    };
 
     angular.extend($scope, {
-        model: model
+        Message: models.Message,
+        SendMessage: sendMessage
     });
 });
 //# sourceMappingURL=ChatController.js.map

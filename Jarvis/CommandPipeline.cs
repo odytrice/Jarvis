@@ -48,14 +48,10 @@ namespace Jarvis
                 {
                     throw new ApplicationException("no middleware has been registered");
                 }
-                IResult last = new TypedResult<IEnumerable<Device>>(clientDevices, commandString);
+                IResult last = new TypedResult<IEnumerable<Device>>(clientDevices);
                 foreach (var p in __middlewares)
                 {
-                    if (last == null)
-                    {
-                        throw new NullReferenceException("last middleware did not return an IResult");
-                    }
-                    var t = p.Run(last.CommandBuffer, last);
+                    var t = p.Run(commandString, last);
                     t.Wait();
                     last = t.Result;
                 }

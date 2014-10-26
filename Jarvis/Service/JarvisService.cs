@@ -24,7 +24,7 @@ namespace Jarvis.Service
                 {
                     Events.Instance.DispatchResponse(new Impl.JarvisResponse()
                     {
-                        Message = t.Exception.Message,
+                        Message = "Command parsing failed: " + t.Exception.Message,
                         StatusCode = ResponseCodes.COMMAND_ERROR
                     });
                 }

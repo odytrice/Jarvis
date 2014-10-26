@@ -28,6 +28,11 @@ namespace Jarvis
             return base.OnReconnected();
         }
 
+        public override System.Threading.Tasks.Task OnDisconnected()
+        {
+            return base.OnDisconnected();
+        }
+
         public void OnCommandCompleted(Service.Impl.JarvisResponse response) {
             Service.JarvisService.TranslateResponse(response);
             //if (response.StatusCode == Service.ResponseCodes.DEVICE_LIST)

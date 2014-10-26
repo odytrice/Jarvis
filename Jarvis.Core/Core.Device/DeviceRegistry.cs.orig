@@ -8,6 +8,7 @@ namespace Jarvis.Core.Device
 {
     public class DeviceRegistry
     {
+<<<<<<< HEAD
         private Dictionary<string, IEnumerable<Device>> devicesMap;
         
         private DeviceRegistry()
@@ -42,6 +43,11 @@ namespace Jarvis.Core.Device
         {
             devicesMap[clientID] = devices;
             return devicesMap.Count;
+=======
+        IEnumerable<Device> Devices(string user)
+        {
+            throw new NotImplementedException();
+>>>>>>> origin/dev
         }
     }
 }
