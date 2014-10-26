@@ -1,4 +1,5 @@
-﻿using Jarvis.Core.Message;
+﻿using Jarvis.Core.Device;
+using Jarvis.Core.Message;
 using Jarvis.Service;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,8 @@ namespace Jarvis
             return this;
         }
 
-        public Task<Jarvis.Core.Message.ICommand> Process(string commandString)
+        
+        public Task<Jarvis.Core.Message.ICommand> Process(string commandString, IEnumerable<IDevice> clientDevices)
         {
             
             return new Task<Jarvis.Core.Message.ICommand>(() =>
@@ -46,7 +48,7 @@ namespace Jarvis
                 {
                     throw new ApplicationException("no middleware has been registered");
                 }
-                IResult last = null;
+                IResult last = new TypedResult<IEnumerable<IDevice>>(clientDevices);
                 foreach (var p in __middlewares)
                 {
                     var t = p.Run(commandString, last);
