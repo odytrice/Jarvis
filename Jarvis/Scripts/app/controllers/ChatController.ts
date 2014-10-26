@@ -2,8 +2,8 @@
 
     var model = {
         Message: {
-            Sender: 'You',
-            Body: 'Hi Jarvis'
+            Sender: '',
+            Body: ''
         },
         GetMessages: function () {
             return _hub.GetMessages();
