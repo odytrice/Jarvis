@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jarvis", "Jarvis\Jarvis.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jarvis.Tests", "Jarvis.Tests\Jarvis.Tests.csproj", "{29975A71-699A-4032-ACF1-BB5E47D9CBA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jarvis.Core", "Jarvis.Core\Jarvis.Core.csproj", "{F885A4C0-3A85-41B6-A083-5088E361BE87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{29975A71-699A-4032-ACF1-BB5E47D9CBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29975A71-699A-4032-ACF1-BB5E47D9CBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29975A71-699A-4032-ACF1-BB5E47D9CBA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F885A4C0-3A85-41B6-A083-5088E361BE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F885A4C0-3A85-41B6-A083-5088E361BE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F885A4C0-3A85-41B6-A083-5088E361BE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F885A4C0-3A85-41B6-A083-5088E361BE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
