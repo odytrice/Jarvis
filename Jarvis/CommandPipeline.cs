@@ -15,6 +15,11 @@ namespace Jarvis
         private CommandPipeline()
         {
             __middlewares = new List<IMiddleware>();
+            __middlewares.Add(new Middlewares.CommandBuiderMiddleware());
+            __middlewares.Add(new Middlewares.CommandDiscovererMiddleware());
+            __middlewares.Add(new Middlewares.ActionFilterMiddleware());
+            __middlewares.Add(new Middlewares.PropertyFilterMiddleware());
+            __middlewares.Add(new Middlewares.DeviceLocatorMiddleware());
         }
 
         private static CommandPipeline __instance = null;
@@ -50,15 +55,14 @@ namespace Jarvis
                 }
                 IResult last = new TypedResult<IEnumerable<Device>>(clientDevices, commandString);
                 last.Command = new Jarvis.Service.Impl.JarvisCommand();
-                foreach (var p in __middlewares)
+                //call in descending order or priority
+                foreach (var p in __middlewares.OrderByDescending(x => x.Priority))
                 {
                     if (last == null)
                     {
                         throw new NullReferenceException("last middleware did not return an IResult");
                     }
-                    var t = p.Run(last.CommandBuffer, last);
-                    t.Wait();
-                    last = t.Result;
+                    last = p.Run(last.CommandBuffer, last);
                 }
                 if (last != null && last.Command != null)
                 {
@@ -71,7 +75,8 @@ namespace Jarvis
 
     public interface IMiddleware
     {
-        Task<IResult> Run(string commandString, IResult previousResult);
+        IResult Run(string commandString, IResult previousResult);
+        int Priority { get; set; }
     }
 
     public interface IResult

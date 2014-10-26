@@ -9,11 +9,13 @@ namespace Jarvis.Middlewares
 {
     public class PropertyFilterMiddleware: TypedMiddleware<IEnumerable<Device>>
     {
-        protected override System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<IEnumerable<Device>> previousResult)
+        public PropertyFilterMiddleware()
         {
-            return Task.Run<IResult>(() =>
-            {
-                if (previousResult.TypedData == null) return previousResult;
+            this.Priority = 900;
+        }
+        protected override IResult Run(string commandString, TypedResult<IEnumerable<Device>> previousResult)
+        {
+            if (previousResult.TypedData == null) return previousResult;
                 else
                 {
                     var matched = new Dictionary<Device, ICollection<DeviceProperty>>();
@@ -38,7 +40,6 @@ namespace Jarvis.Middlewares
 
                     return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf);
                 }
-            });
         }
     }
 }

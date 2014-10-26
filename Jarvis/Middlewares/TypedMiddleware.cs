@@ -7,11 +7,18 @@ namespace Jarvis.Middlewares
 {
     public abstract class TypedMiddleware<IResultDataType> : IMiddleware
     {
-        public System.Threading.Tasks.Task<IResult> Run(string commandString, IResult previousResult)
+        public IResult Run(string commandString, IResult previousResult)
         {
             return this.Run(commandString, (TypedResult<IResultDataType>)previousResult);
         }
 
-        protected abstract System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<IResultDataType> previousResult);
+        protected abstract IResult Run(string commandString, TypedResult<IResultDataType> previousResult);
+
+
+        public int Priority
+        {
+            get;
+            set;
+        }
     }
 }
