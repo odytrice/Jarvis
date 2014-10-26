@@ -15,6 +15,12 @@ namespace Jarvis.Core.Message
         CommandProperty[] Properties { get; set; }
     }
 
+    public class CommandProperty
+    {
+        public string Name { get; set; }
+        public object Value { get; set; }
+    }
+
     public enum CommandType
     {
         Query, Act, Set
