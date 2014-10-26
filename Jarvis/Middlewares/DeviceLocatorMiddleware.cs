@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Jarvis.Middlewares
 {
-    public class DeviceLocatorMiddleware : TypedMiddleware<IDevice> {
+    public class DeviceLocatorMiddleware : TypedMiddleware<Device> {
 
-        protected override System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<IDevice> previousResult)
+        protected override System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<Device> previousResult)
         {
             throw new NotImplementedException();
         }
