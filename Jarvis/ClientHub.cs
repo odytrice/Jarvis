@@ -19,8 +19,7 @@ namespace Jarvis
 
         void Instance_NewMessageAvailable(object sender, Service.MessageEventArgs e)
         {
-            Clients.All.NewMessage(e.ToMessage());
-            Messages.Enqueue(e.ToMessage());
+            EnqueueMessage(e.ToMessage());
         }
 
         public override System.Threading.Tasks.Task OnConnected()
@@ -42,9 +41,19 @@ namespace Jarvis
 
         public void Receive(Message message)
         {
-            Service.JarvisService.ToCommand(message.Body,Context.ConnectionId);
+            Service.JarvisService.ToCommand(message.Body, Context.ConnectionId);
+            EnqueueMessage(message);
+        }
+
+        private void EnqueueMessage(Message message)
+        {
+            if (Messages.Count == 10)
+            {
+                Message m;
+                Messages.TryDequeue(out m);
+            }
             Messages.Enqueue(message);
-            Clients.All.NewMessage(message);
+            Clients.All.Initialize(Messages);
         }
     }
 }
