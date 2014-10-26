@@ -9,49 +9,52 @@ namespace Jarvis.Service
 {
     public class JarvisService
     {
+        private JarvisService()
+        {
+            Events.Instance.NewResponseReceived += Instance_NewResponseReceived;
+        }
+
+        void Instance_NewResponseReceived(object sender, ResponseEventArgs e)
+        {
+            TranslateResponse(e.Response);
+        }
         /// <summary>
         /// Transforms a string, codifies into a command object that is dispatched `
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static Task ToCommand(string str, string clientID)
+        public static async Task ToCommand(string str, string clientID)
         {
-            
-            return System.Threading.Tasks.Task.Run(() => {
-                var t = CommandPipeline.Instance.Process(str, Jarvis.Core.Device.DeviceRegistry.Instance.Fetch(clientID));
-                t.Wait();
-                if (t.IsFaulted)
+            try
+            {
+                var command = await CommandPipeline.Instance.Process(str, Jarvis.Core.Device.DeviceRegistry.Instance.Fetch(clientID));
+                if (command == null)
                 {
                     Events.Instance.DispatchResponse(new Impl.JarvisResponse()
                     {
-                        Message = t.Exception.Message,
-                        StatusCode = ResponseCodes.COMMAND_ERROR
+                        Message = "Unknown command",
+                        StatusCode = ResponseCodes.UNKNOWN_COMMAND
                     });
                 }
                 else
                 {
-                    var r = t.Result;
-                    if (r == null)
-                    {
-                        Events.Instance.DispatchResponse(new Impl.JarvisResponse()
-                        {
-                            Message = "Unknown command",
-                            StatusCode = ResponseCodes.UNKNOWN_COMMAND
-                        });
-                    }
-                    else
-                    {
-                        Events.Instance.DispatchCommand(r);
-                    }
+                    Events.Instance.DispatchCommand(command);
                 }
-            });
-            
+            }
+            catch (Exception ex)
+            {
+                Events.Instance.DispatchResponse(new Impl.JarvisResponse()
+                {
+                    Message = ex.Message,
+                    StatusCode = ResponseCodes.COMMAND_ERROR
+                });
+            }
         }
 
 
         public static Task TranslateResponse(IResponse response)
         {
-             return Task.Run(() => Events.Instance.DispatchMessage(ResponseToString(response)));
+            return Task.Run(() => Events.Instance.DispatchMessage(ResponseToString(response)));
         }
 
         /// <summary>
@@ -66,7 +69,7 @@ namespace Jarvis.Service
             {
                 if (i > 0)
                 {
-                    
+
                     if (i == len - 1)
                     {
                         buff.Append(' ').Append(Resources.Lang.AND.ToLower()).Append(' ');
@@ -83,7 +86,7 @@ namespace Jarvis.Service
 
         public static string ResponseToString(IResponse response)
         {
-            
+
             switch (response.StatusCode)
             {
                 case ResponseCodes.SUCCESS:
@@ -105,7 +108,7 @@ namespace Jarvis.Service
                             {
                                 buff.AppendFormat(Resources.Lang.RESPONSE_QUERY_FORMAT, x.Name, x.Value);
                             }
-                            
+
                             added = true;
                         });
                         return buff.ToString();
@@ -119,7 +122,7 @@ namespace Jarvis.Service
 
                 case ResponseCodes.UNKNOWN_COMMAND:
                     return Resources.Lang.RESPONSE_UNKNOWN_COMMAND;
-                    
+
             }
             return response.Message;
         }

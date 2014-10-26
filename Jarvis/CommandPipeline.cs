@@ -49,6 +49,10 @@ namespace Jarvis
             
             var t = new Task<Jarvis.Core.Message.ICommand>(() =>
             {
+                if (!clientDevices.Any())
+                {
+                    throw new ApplicationException("zero devices sent by client");
+                }
                 if (__middlewares.Count == 0)
                 {
                     throw new ApplicationException("no middleware has been registered");

@@ -27,7 +27,6 @@ app.service('_hub', ['$rootScope', "_audio", function ($rootScope: ng.IRootScope
         PlayAudio: function (text) {
             _audio.playAudio(text);
         }
-
     });
 
     //Start Connection

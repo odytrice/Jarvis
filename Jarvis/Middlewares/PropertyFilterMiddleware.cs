@@ -25,7 +25,7 @@ namespace Jarvis.Middlewares
                         foreach(var prop in device.Properties)
                         {
                             //ids
-                            if (prop.IdTags.Any(tag => cbuf.Contains((string)tag)))
+                            if (prop.IdTags.Count()==0 || prop.IdTags.Any(tag => cbuf.Contains((string)tag)))
                             {
                                 if (!matched.ContainsKey(device)) matched[device] = new HashSet<DeviceProperty>();
                                 matched[device].Add(prop);

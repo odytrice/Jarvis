@@ -31,10 +31,10 @@ namespace Jarvis.Core.Device
 
         public IEnumerable<Device> Fetch(string clientID)
         {
-            if (!devicesMap.ContainsKey(clientID))
-            {
-                return new Device[0];
-            }
+            //if (!devicesMap.ContainsKey(clientID))
+            //{
+            //    return new Device[0];
+            //}
             return devicesMap[clientID];
         }
 
