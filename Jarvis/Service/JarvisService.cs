@@ -54,6 +54,11 @@ namespace Jarvis.Service
              return Task.Run(() => Events.Instance.DispatchMessage(ResponseToString(response)));
         }
 
+        /// <summary>
+        /// Transform a list to human string form 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         private static String StringifyArray(object[] list)
         {
             System.Text.StringBuilder buff = new System.Text.StringBuilder();
@@ -64,13 +69,14 @@ namespace Jarvis.Service
                     
                     if (i == len - 1)
                     {
-                        buff.Append(' ').Append(Resources.Lang.AND.ToLower());
+                        buff.Append(' ').Append(Resources.Lang.AND.ToLower()).Append(' ');
                     }
                     else
                     {
-
+                        buff.Append(", ");
                     }
                 }
+                buff.Append(list[i].ToString());
             }
             return buff.ToString();
         }
