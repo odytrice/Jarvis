@@ -28,9 +28,9 @@ namespace Jarvis
             return base.OnReconnected();
         }
 
-        public override System.Threading.Tasks.Task OnDisconnected()
+        public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
         {
-            return base.OnDisconnected();
+            return base.OnDisconnected(stopCalled);
         }
 
         public void OnCommandCompleted(Service.Impl.JarvisResponse response) {
