@@ -51,7 +51,7 @@ namespace Jarvis.Middlewares
                     }
                 }
             }
-            return new TypedResult<IEnumerable<Device>>(discoverdDevices, commandString);
+            return new TypedResult<IEnumerable<Device>>(discoverdDevices, commandString) { Command = previousResult.Command };
 
         }
     }

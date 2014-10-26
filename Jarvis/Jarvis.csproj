@@ -930,6 +930,7 @@
     <Compile Include="ClientHub.cs" />
     <Compile Include="CommandPipeline.cs" />
     <Compile Include="ControlHub.cs" />
+    <Compile Include="DeviceMutationUknownException.cs" />
     <Compile Include="Middlewares\ActionFilterMiddleware.cs" />
     <Compile Include="Middlewares\CommandBuiderMiddleware.cs" />
     <Compile Include="Middlewares\CommandDiscovererMiddleware.cs" />
