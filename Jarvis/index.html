@@ -5,7 +5,7 @@
     <link href="Content/theme/bootstrap/flaty.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <link href="Content/Site.css" rel="stylesheet" />
-
+    <link href="Content/css/font-awesome.css" rel="stylesheet" />
 </head>
 <body ng-app="MainApp">
 
@@ -43,6 +43,7 @@
                 <div class="col-md-12">
                     <form ng-submit="SendMessage(model.Message)">
                         <input type="text" ng-model="model.Message.Body" placeholder="Say 'Hello Jarvis'" class="form-control" style="font-family:'Poiret One', cursive;font-size: 72px;padding: 150px;color: #111;text-align: center;border: none;width:100%;" />
+                        <i class="fa fa-2x fa-microphone" style="color:black" ng-click="startSpeech()"></i>
                     </form>
                 </div>
                 <div class="col-md-12">

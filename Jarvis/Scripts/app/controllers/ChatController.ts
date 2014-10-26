@@ -1,5 +1,5 @@
 ﻿/// <reference path="../services/hub.ts" />
-app.controller("ChatController", function ($scope, _hub: IHub) {
+app.controller("ChatController", function ($scope, _hub: IHub, _audio: IAudioService) {
 
     var model = {
         Message: {
@@ -17,11 +17,21 @@ app.controller("ChatController", function ($scope, _hub: IHub) {
             _hub.SendMessage(content);
             model.Message.Body = "";
         }
+        $scope.startSpeech = function () {
+            _audio.listen(function (result) {
+                $scope.$apply(function () {
+                    model.Message.Body = result;
+                    _hub.SendMessage(model.Message);
+                });
+            });
+        }
     });
 
     _hub.start.fail(function (reason) {
         console.error(reason);
     });
+
+    
 
 
 
