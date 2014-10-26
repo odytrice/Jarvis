@@ -38,8 +38,13 @@ namespace Jarvis
 
         public Task<Jarvis.Core.Message.ICommand> Process(string commandString)
         {
+            
             return new Task<Jarvis.Core.Message.ICommand>(() =>
             {
+                if (__middlewares.Count == 0)
+                {
+                    throw new ApplicationException("no middleware has been registered");
+                }
                 IResult last = null;
                 foreach (var p in __middlewares)
                 {
