@@ -24,6 +24,6 @@ namespace Jarvis.Core.Message
 
     public enum CommandType
     {
-        Query, Act, Set
+        Act, Query, Set
     }
 }

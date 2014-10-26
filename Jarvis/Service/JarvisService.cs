@@ -59,7 +59,7 @@ namespace Jarvis.Service
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        private static String StringifyArray(object[] list)
+        public static String StringifyArray(Array list)
         {
             System.Text.StringBuilder buff = new System.Text.StringBuilder();
             for (int i = 0, len = list.Length; i < len; i++)
@@ -76,7 +76,7 @@ namespace Jarvis.Service
                         buff.Append(", ");
                     }
                 }
-                buff.Append(list[i].ToString());
+                buff.Append(list.GetValue(i).ToString());
             }
             return buff.ToString();
         }
@@ -87,7 +87,7 @@ namespace Jarvis.Service
             switch (response.StatusCode)
             {
                 case ResponseCodes.SUCCESS:
-                    if (response.CommandType == CommandType.Query)
+                    if (response.CommandType == CommandType.Query && response.Properties != null && response.Properties.Length > 0)
                     {
                         System.Text.StringBuilder buff = new System.Text.StringBuilder();
                         bool added = false;
@@ -97,7 +97,15 @@ namespace Jarvis.Service
                             {
                                 buff.AppendLine();
                             }
-                            buff.AppendFormat(Resources.Lang.RESPONSE_QUERY_FORMAT, x.Name, x.Value);
+                            if (x.Value is Array)
+                            {
+                                buff.AppendFormat(Resources.Lang.RESPONSE_QUERY_FORMAT, x.Name, StringifyArray((Array)x.Value));
+                            }
+                            else
+                            {
+                                buff.AppendFormat(Resources.Lang.RESPONSE_QUERY_FORMAT, x.Name, x.Value);
+                            }
+                            
                             added = true;
                         });
                         return buff.ToString();
