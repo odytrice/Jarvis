@@ -7,11 +7,11 @@
 }
 
 .bg {
-    //background:url("Images/electric.png");
+    /*background:url("Images/electric.png");*/
     background: url("Images/electric.png");
     background-position: center;
     padding: 5px;
-    margin-top: 10px;
+    margin: 0px 0px 30px;
 }
 
 .bg-top {
@@ -31,15 +31,15 @@
 
 @media (max-width: 768px) {
     .heroblock {
-        font-size: 40px;
-        height: 150px;
+        ont-size: 40px;
+        eight: 150px;
     }
 }
 
 @media (min-width: 768px) {
     .heroblock {
-        font-size: 60px;
-        height: 400px;
+        ont-size: 60px;
+        eight: 400px;
     }
 }
 
@@ -50,7 +50,7 @@
 }
 
 .heroblock i {
-    margin-right: 15px;
+    argin-right: 15px;
 }
 
 #login {

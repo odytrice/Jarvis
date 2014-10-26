@@ -7,43 +7,44 @@
     <link href="Content/Site.css" rel="stylesheet" />
 
 </head>
-<body>
+<body ng-app="MainApp">
 
-    <div class="heroblock">
-        <div class="container-fluid" id="content">
+    <div class="heroblock" ng-controller="ChatController">
+        <div class="container-fluid" id="content" style="border:0px solid blue">
             <!--<div>Jarvis</div>-->
 
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="bg-top">
+                    <!--<div class="bg"></div>-->
+
+                    <div class="col-md-6 col-md-offset-3" style="vertical-align:bottom;color:#F1901D;border:0px solid red;font-size:36px;background:rgba(255,255,255,1);height:600px;overflow-y:hidden;">
+                        <p> 
+                            {{Message.sender}} : {{Message.body}}
+                        </p>
+
+                    </div>
+
+                    <div lass="bg-top" style="margin-top:15%">
                         <!--<img src="Content/Images/abstract.png" />-->
                         <!--<img src="Content/Images/electric.png" />-->
                     </div>
-                    <div class="bg">
-                        <!--<img src="Content/Images/abstract.png" />-->
-                        <!--<img src="Content/Images/electric.png" />-->
-                    </div>
+                    <div class="bg" style="margin-top:500px;"></div>
 
                 </div>
 
-
                 <div class="col-md-12">
-                    <p> Hi Jarvis</p>
-                </div>
-
-                <div class="col-md-12">
-
-                    <input type="text" value="Say 'Hello Jarvis'" class="form-control" style="font-family:'Poiret One', cursive;font-size: 72px;padding: 150px;color: #111;text-align: center;border: none;width:100%;" />
-
-
+                    <form ng-submit="SendMessage()">
+                        <input type="text" ng-model="chat.message" placeholder="Say 'Hello Jarvis'" class="form-control" style="font-family:'Poiret One', cursive;font-size: 72px;padding: 150px;color: #111;text-align: center;border: none;width:100%;" />
+                    </form>
                 </div>
                 <div class="col-md-12">
                     <p style="font-size:x-large">
                         <small class="help-block">
-                            <b>Press enter to send Jarvis a message.  Better yet just speak with her, don't be shy now... she's good <i>!</i></b>
+                            <b>Press enter to send Jarvis a message.  Better yet just speak with her, don't be shy now... she's good !</b>
                         </small>
                     </p>
+
                 </div>
 
             </div>
@@ -51,6 +52,9 @@
     </div>
     <script src="Scripts/jquery/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular/angular.min.js"></script>
+    <script src="Scripts/app/App.js"></script>
+    <script src="Scripts/app/controllers/ChatController.js"></script>
 </body>
 </html>
 
