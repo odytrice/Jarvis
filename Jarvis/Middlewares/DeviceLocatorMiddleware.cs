@@ -18,6 +18,8 @@ namespace Jarvis.Middlewares
                     throw new NullReferenceException("no device list passed");
                 }
                 List<Device> discoverdDevices = new List<Device>();
+                //have a list of tags that were found and later remove
+                var discoveredTags = new List<string>();
                 foreach (var d in devices)
                 {
                     //iterate through all the tags of a device
@@ -27,9 +29,22 @@ namespace Jarvis.Middlewares
                         //if the tag exists then add that device to discovered devices and remove that tag in the command string
                         if (idx != -1)
                         {
+                            discoveredTags.Add(tag.Name);
                             discoverdDevices.Add(d);
-                            commandString = commandString.Remove(idx, tag.Name.Length);
+                            //commandString = commandString.Remove(idx, tag.Name.Length);
                             continue;
+                        }
+                    }
+                }
+                if (discoveredTags.Count > 0)
+                {
+                    //locate and remove from command starting with the longest tag
+                    foreach (var d in discoveredTags.OrderByDescending(x => x.Length))
+                    {
+                        int idx = commandString.IndexOf(d);
+                        if (idx != -1)
+                        {
+                            commandString = commandString.Remove(idx, d.Length);
                         }
                     }
                 }
