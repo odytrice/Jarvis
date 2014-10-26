@@ -1,4 +1,5 @@
-﻿app.controller("ChatController", function ($scope, _hub) {
+﻿/// <reference path="../services/hub.ts" />
+app.controller("ChatController", function ($scope, _hub) {
     var model = {
         Message: {
             Sender: 'You',
@@ -24,4 +25,3 @@
         model: model
     });
 });
-//# sourceMappingURL=ChatController.js.map

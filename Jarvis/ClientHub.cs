@@ -54,6 +54,7 @@ namespace Jarvis
             }
             Messages.Enqueue(message);
             Clients.All.Initialize(Messages);
+            Clients.All.PlayAudio(message.Body);
         }
     }
 }

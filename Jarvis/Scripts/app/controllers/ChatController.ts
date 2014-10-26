@@ -1,4 +1,5 @@
-﻿app.controller("ChatController", function ($scope, _hub: IHub) {
+﻿/// <reference path="../services/hub.ts" />
+app.controller("ChatController", function ($scope, _hub: IHub) {
 
     var model = {
         Message: {
@@ -22,8 +23,11 @@
         console.error(reason);
     });
 
+
+
     angular.extend($scope, {
         model: model
     });
 
 })
+

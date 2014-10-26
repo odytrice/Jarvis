@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../typings/signalr/signalr.d.ts" />
 'use strict';
 app.service('_hub', [
-    '$rootScope', function ($rootScope) {
+    '$rootScope', "_audio", function ($rootScope, _audio) {
         //Create Representation of the Server's Move Shape
         var conn = $.connection;
         var hub = conn.clientHub;
@@ -23,6 +23,9 @@ app.service('_hub', [
                 $rootScope.$apply(function () {
                     state.Messages.push(message);
                 });
+            },
+            PlayAudio: function (text) {
+                _audio.playAudio(text);
             }
         });
 
@@ -40,4 +43,3 @@ app.service('_hub', [
 
         return self;
     }]);
-//# sourceMappingURL=hub.js.map
