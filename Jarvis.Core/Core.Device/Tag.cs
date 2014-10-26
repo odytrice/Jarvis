@@ -22,7 +22,7 @@ namespace Jarvis.Core.Device
             {
                 return this.Name == (obj as Tag).Name;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return false;
             }
@@ -51,7 +51,7 @@ namespace Jarvis.Core.Device
             {
                 return x.Equals(y);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return false;
             }

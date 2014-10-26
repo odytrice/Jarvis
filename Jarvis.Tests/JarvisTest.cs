@@ -15,7 +15,7 @@ namespace Jarvis.Tests
             {
                 commandReceived = o.Command.Action;
             };
-            await Jarvis.Service.Jarvis.ToCommand("go");
+            await Jarvis.Service.JarvisService.ToCommand("go", "");
             Assert.AreEqual(commandReceived, "go");
         }
 
@@ -27,7 +27,7 @@ namespace Jarvis.Tests
             {
                 commandReceived = o.Response.Message;
             };
-            await Jarvis.Service.Jarvis.TranslateResponse(new Jarvis.Service.Impl.JarvisResponse()
+            await Jarvis.Service.JarvisService.TranslateResponse(new Jarvis.Service.Impl.JarvisResponse()
             {
                 Message = expectedResponse
             });

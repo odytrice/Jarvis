@@ -1,21 +1,29 @@
-﻿app.controller("ChatController", function ($scope) {
+﻿app.controller("ChatController", function ($scope, _hub: IHub) {
 
-    var models = {
+    var model = {
         Message: {
-            sender: 'You',
-            body: 'Hi Jarvis'
+            Sender: 'You',
+            Body: 'Hi Jarvis'
+        },
+        GetMessages: function () {
+            return _hub.GetMessages();
         }
     };
 
-    var sendMessage = function () {
 
-        console.log('good');
+    _hub.start.done(function () {
+        $scope.SendMessage = function (content: Message) {
+            _hub.SendMessage(content);
+            model.Message.Body = "";
+        }
+    });
 
-    }
+    _hub.start.fail(function (reason) {
+        console.error(reason);
+    });
 
     angular.extend($scope, {
-        Message : models.Message,
-        SendMessage: sendMessage
+        model: model
     });
 
 })
