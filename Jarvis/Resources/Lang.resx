@@ -120,6 +120,9 @@
   <data name="AND" xml:space="preserve">
     <value>and</value>
   </data>
+  <data name="RESPONSE_COMMAND_ERROR" xml:space="preserve">
+    <value>I'am afraid your command is not very clear to me.</value>
+  </data>
   <data name="RESPONSE_FAILED" xml:space="preserve">
     <value>I couldn't get an 'OK' from your device. The connection may not be ok. Do you want to try again?</value>
   </data>
@@ -128,5 +131,8 @@
   </data>
   <data name="RESPONSE_SUCCESS" xml:space="preserve">
     <value>Command carried out successfully.</value>
+  </data>
+  <data name="RESPONSE_UNKNOWN_COMMAND" xml:space="preserve">
+    <value>I do not understand you. Can you repeat the command?</value>
   </data>
 </root>

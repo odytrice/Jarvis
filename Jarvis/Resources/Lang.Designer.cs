@@ -70,6 +70,15 @@ namespace Jarvis.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I&apos;am afraid your command is not very clear to me..
+        /// </summary>
+        internal static string RESPONSE_COMMAND_ERROR {
+            get {
+                return ResourceManager.GetString("RESPONSE_COMMAND_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I couldn&apos;t get an &apos;OK&apos; from your device. The connection may not be ok. Do you want to try again?.
         /// </summary>
         internal static string RESPONSE_FAILED {
@@ -93,6 +102,15 @@ namespace Jarvis.Resources {
         internal static string RESPONSE_SUCCESS {
             get {
                 return ResourceManager.GetString("RESPONSE_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I do not understand you. Can you repeat the command?.
+        /// </summary>
+        internal static string RESPONSE_UNKNOWN_COMMAND {
+            get {
+                return ResourceManager.GetString("RESPONSE_UNKNOWN_COMMAND", resourceCulture);
             }
         }
     }
