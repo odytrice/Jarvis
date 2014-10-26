@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jarvis.Core.Message;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,12 +18,32 @@ namespace Jarvis.Service
         {
             
             return System.Threading.Tasks.Task.Run(() => {
-
-                Events.Instance.DispatchCommand(new Impl.JarvisCommand()
+                var t = CommandPipeline.Instance.Process(str);
+                t.Wait();
+                if (t.IsFaulted)
                 {
-                    CommandType = CommandType.Act,
-                    Action = str
-                });
+                    Events.Instance.DispatchResponse(new Impl.JarvisResponse()
+                    {
+                        Message = "Command parsing failed: " + t.Exception.Message,
+                        StatusCode = ResponseCodes.COMMAND_ERROR
+                    });
+                }
+                else
+                {
+                    var r = t.Result;
+                    if (r == null)
+                    {
+                        Events.Instance.DispatchResponse(new Impl.JarvisResponse()
+                        {
+                            Message = "Unknown command",
+                            StatusCode = ResponseCodes.UNKNOWN_COMMAND
+                        });
+                    }
+                    else
+                    {
+                        Events.Instance.DispatchCommand(r);
+                    }
+                }
             });
             
         }
