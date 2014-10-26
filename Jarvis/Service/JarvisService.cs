@@ -51,8 +51,57 @@ namespace Jarvis.Service
 
         public static Task TranslateResponse(IResponse response)
         {
-             return Task.Run(() => Events.Instance.DispatchMessage(response.Message));
+             return Task.Run(() => Events.Instance.DispatchMessage(ResponseToString(response)));
+        }
+
+        private static String StringifyArray(object[] list)
+        {
+            System.Text.StringBuilder buff = new System.Text.StringBuilder();
+            for (int i = 0, len = list.Length; i < len; i++)
+            {
+                if (i > 0)
+                {
+                    
+                    if (i == len - 1)
+                    {
+                        buff.Append(' ').Append(Resources.Lang.AND.ToLower());
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            return buff.ToString();
+        }
+
+        public static string ResponseToString(IResponse response)
+        {
             
+            switch (response.StatusCode)
+            {
+                case ResponseCodes.SUCCESS:
+                    if (response.CommandType == CommandType.Query)
+                    {
+                        System.Text.StringBuilder buff = new System.Text.StringBuilder();
+                        bool added = false;
+                        Array.ForEach(response.Properties, x =>
+                        {
+                            if (added)
+                            {
+                                buff.AppendLine();
+                            }
+                            buff.AppendFormat(Resources.Lang.RESPONSE_QUERY_FORMAT, x.Name, x.Value);
+                            added = true;
+                        });
+                        return buff.ToString();
+                    }
+                    return Resources.Lang.RESPONSE_SUCCESS;
+                case ResponseCodes.FAILED:
+                    return Resources.Lang.RESPONSE_FAILED;
+                    
+            }
+            return response.Message;
         }
     }
 }

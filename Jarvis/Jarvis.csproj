@@ -894,8 +894,6 @@
     <Compile Include="CommandPipeline.cs" />
     <Compile Include="ControlHub.cs" />
     <Compile Include="Middlewares\ActionFilterMiddleware.cs" />
-    <Compile Include="Middlewares\CommandBuiderMiddleware.cs" />
-    <Compile Include="Middlewares\CommandDiscovererMiddleware.cs" />
     <Compile Include="Middlewares\DeviceLocatorMiddleware.cs" />
     <Compile Include="Middlewares\PropertyFilterMiddleware.cs" />
     <Compile Include="Middlewares\TypedMiddleware.cs" />
@@ -905,6 +903,11 @@
     <Compile Include="Repository\Hack\MemoryRepositoryFactory.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
+    <Compile Include="Resources\Lang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service\JarvisService.cs" />
     <Compile Include="Service\Events.cs" />
     <Compile Include="Service\Impl\JarvisCommand.cs" />
@@ -928,6 +931,7 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">
       <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
@@ -935,7 +939,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <EmbeddedResource Include="Resources\Lang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
