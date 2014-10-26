@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+using Jarvis.Core.Device;
 
 namespace Jarvis
 {
@@ -41,14 +42,16 @@ namespace Jarvis
             
         }
 
-        public void ReceiveDeviceList(Dictionary<string, string> list)
+        public void Init(Device[] devices)
         {
-            // TODO: store the list of devices
-        }
+            try
+            {
+                DeviceRegistry.Instance.Store("", devices);
+            }
+            catch (Exception ex)
+            {
 
-        public void Hello()
-        {   
-            Clients.All.hello();
+            }
         }
 
         public void Setup(object[] devices)

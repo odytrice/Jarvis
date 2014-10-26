@@ -29,7 +29,7 @@ namespace Jarvis.Core.Device
             }
         }
 
-        public IEnumerable<Tag> IdTags
+        public Tag[] IdTags
         {
             get
             {
