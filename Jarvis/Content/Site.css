@@ -19,6 +19,15 @@
     background-position: center;
     padding: 100px;
 }
+.chat-window {
+    text-align:center; 
+    color:#F1901D;
+    border:0px solid red;
+    font-size:36px;
+    background:rgba(255,255,255,1);
+    height:600px;
+    verflow-y:hidden;
+}
 
 .heroblock {
     margin: auto;

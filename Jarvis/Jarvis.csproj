@@ -894,6 +894,8 @@
     <Compile Include="CommandPipeline.cs" />
     <Compile Include="ControlHub.cs" />
     <Compile Include="Middlewares\ActionFilterMiddleware.cs" />
+    <Compile Include="Middlewares\CommandBuiderMiddleware.cs" />
+    <Compile Include="Middlewares\CommandDiscovererMiddleware.cs" />
     <Compile Include="Middlewares\DeviceLocatorMiddleware.cs" />
     <Compile Include="Middlewares\PropertyFilterMiddleware.cs" />
     <Compile Include="Middlewares\TypedMiddleware.cs" />

@@ -12,9 +12,9 @@ namespace Jarvis.Middlewares
     {
         protected override System.Threading.Tasks.Task<IResult> Run(string commandString, TypedResult<Dictionary<Device, ICollection<DeviceProperty>>> previousResult)
         {
-            return Task.Run<ICommand>(() =>
+            return Task.Run<IResult>(() =>
             {
-
+                return (IResult)null;
             });
         }
     }
