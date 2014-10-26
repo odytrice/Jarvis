@@ -113,6 +113,12 @@ namespace Jarvis.Service
                     return Resources.Lang.RESPONSE_SUCCESS;
                 case ResponseCodes.FAILED:
                     return Resources.Lang.RESPONSE_FAILED;
+
+                case ResponseCodes.COMMAND_ERROR:
+                    return Resources.Lang.RESPONSE_COMMAND_ERROR;
+
+                case ResponseCodes.UNKNOWN_COMMAND:
+                    return Resources.Lang.RESPONSE_UNKNOWN_COMMAND;
                     
             }
             return response.Message;
