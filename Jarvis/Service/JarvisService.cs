@@ -62,7 +62,7 @@ namespace Jarvis.Service
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static String StringifyArray(Array list)
+        public static String StringifyArray(Array list, Func<object, string> format = null)
         {
             System.Text.StringBuilder buff = new System.Text.StringBuilder();
             for (int i = 0, len = list.Length; i < len; i++)
@@ -79,7 +79,15 @@ namespace Jarvis.Service
                         buff.Append(", ");
                     }
                 }
-                buff.Append(list.GetValue(i).ToString());
+                if (format != null)
+                {
+                    buff.Append(format(list.GetValue(i)));
+                }
+                else
+                {
+                    buff.Append(list.GetValue(i).ToString());
+                }
+                
             }
             return buff.ToString();
         }
