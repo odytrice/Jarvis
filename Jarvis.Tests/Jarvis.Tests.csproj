@@ -52,6 +52,7 @@
     <Compile Include="JarvisTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DeviceRegistryTest.cs" />
+    <Compile Include="CommandPipelineTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jarvis.Core\Jarvis.Core.csproj">

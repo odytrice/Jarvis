@@ -9,7 +9,12 @@ namespace Jarvis.Middlewares
     {
         public IResult Run(string commandString, IResult previousResult)
         {
-            return this.Run(commandString, (TypedResult<IResultDataType>)previousResult);
+            if (previousResult is TypedResult<IResultDataType>)
+            {
+                return this.Run(commandString, (TypedResult<IResultDataType>)previousResult);
+            }
+            throw new InvalidOperationException(String.Format("Previous middleware return an IResult of {0} but this middleware expects a {1}", previousResult.GetType(),
+                typeof(TypedResult<IResultDataType>).Name));
         }
 
         protected abstract IResult Run(string commandString, TypedResult<IResultDataType> previousResult);

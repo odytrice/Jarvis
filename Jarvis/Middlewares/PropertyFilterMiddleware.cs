@@ -38,7 +38,10 @@ namespace Jarvis.Middlewares
                                                              .OrderByDescending(st => st.Length);
                     tags.ToList().ForEach(p => cbuf = cbuf.Replace(p, ""));
 
-                    return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf);
+                    return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf)
+                    {
+                        Command = previousResult.Command
+                    };
                 }
         }
     }

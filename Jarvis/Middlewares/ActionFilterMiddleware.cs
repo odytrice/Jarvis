@@ -21,12 +21,14 @@ namespace Jarvis.Middlewares
             {
                 var matched = new Dictionary<Device, ICollection<DeviceProperty>>();
                 var cbuf = previousResult.CommandBuffer;
+                
                 foreach (var dmap in previousResult.TypedData)
                 {
                     var device = dmap.Key;
                     foreach (var prop in dmap.Value)
                     {
                         //actions
+                        
                         if (prop.MutatorTags.Any(tag => cbuf.Contains((string)tag)))
                         {
                             if (!matched.ContainsKey(device)) matched[device] = new HashSet<DeviceProperty>();
@@ -35,12 +37,24 @@ namespace Jarvis.Middlewares
                     }
                 }
 
+                //if (matched.Count == 0 && previousResult.TypedData.Count > 0)
+                //{
+                //    var item = previousResult.TypedData.First();
+                //    throw new DeviceMutationUknownException(String.Format("No ", item.Key.IdTags.First(), item.Value.First().IdTags.First()))
+                //    {
+
+                //    };
+                //}
+
                 IEnumerable<string> tags = matched.Values.SelectMany(dev => dev.Select(t => t.IdTags)
                                                          .SelectMany(ts => ts.Select(t => t.Name)))
                                                          .OrderByDescending(st => st.Length);
                 tags.ToList().ForEach(p => cbuf = cbuf.Replace(p, ""));
 
-                return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf);
+                return new TypedResult<Dictionary<Device, ICollection<DeviceProperty>>>(matched, cbuf)
+                {
+                     Command = previousResult.Command
+                };
             }
         }
     }
