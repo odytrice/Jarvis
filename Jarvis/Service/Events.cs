@@ -1,4 +1,5 @@
 ﻿using Jarvis.Core.Message;
+using Jarvis.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,5 +84,14 @@ namespace Jarvis.Service
             this.Content = str;
         }
         public string Content { get; private set; }
+
+        public Message ToMessage()
+        {
+            return new Message
+            {
+                Sender = "Jarvis",
+                Body = this.Content
+            };
+        }
     }
 }

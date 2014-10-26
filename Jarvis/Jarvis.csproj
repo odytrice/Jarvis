@@ -104,6 +104,8 @@
     <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.signalr\jquery.signalR-2.1.2.js" />
+    <Content Include="Scripts\jquery.signalr\jquery.signalR-2.1.2.min.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -884,8 +886,6 @@
     <Content Include="Scripts\angular\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery.signalr\jquery.signalR-2.0.2.js" />
-    <Content Include="Scripts\jquery.signalr\jquery.signalR-2.0.2.min.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\angular\version.json" />
   </ItemGroup>
@@ -893,6 +893,7 @@
     <Compile Include="ClientHub.cs" />
     <Compile Include="CommandPipeline.cs" />
     <Compile Include="ControlHub.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Middlewares\DeviceLocatorMiddleware.cs" />
     <Compile Include="Middlewares\TypedMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -914,6 +915,21 @@
       <Project>{f885a4c0-3a85-41b6-a083-5088e361be87}</Project>
       <Name>Jarvis.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\App.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\ChatController.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\hub.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-scenario.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
